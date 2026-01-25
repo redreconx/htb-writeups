@@ -27,16 +27,17 @@ walkthrough-style command execution.
 htb-writeups/
 │
 ├── linux/
-│ └── gavel.md
+│   └── gavel.md
 │
 ├── windows/
-│ └── README.md
+│   └── README.md
 │
 ├── active-directory/
-│ ├── README.md
-│ └── ad-attack-chains.md
+│   ├── README.md
+│   └── ad-attack-chains.md
 │
 └── README.md
+
 
 ---
 
