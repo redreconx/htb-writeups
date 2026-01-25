@@ -1,4 +1,4 @@
-Gavel – Linux Medium – Dynamic Rule Execution & Privilege Boundary Abuse
+# Gavel – Linux Medium – Dynamic Rule Execution & Privilege Boundary Abuse
 
 # Machine Overview
 
@@ -35,7 +35,7 @@ This weakness was amplified by PDO’s default behavior of emulating prepared st
 
 Through this flaw, it was possible to enumerate user credentials and identify a privileged application account, providing the foothold required to access restricted administrative functionality within the platform.
 
-![Figure 1: Administrative interface allowing user-controlled rule modification.](attachment:99478157-1583-46ce-a6dd-d877029b7c85:image.png)
+![Figure 1: Administrative interface allowing user-controlled rule modification.](image.png)
 
 Figure 1: Administrative interface allowing user-controlled rule modification.
 
@@ -51,7 +51,7 @@ Because rule content was fully user-controlled and executed in the application c
 
 This vulnerability highlights the risk of treating user-defined logic as data rather than executable code. Any system that dynamically evaluates user-supplied input without strict controls effectively grants code execution to the user.
 
-![Figure 2: Runtime rule evaluation using runkit_function_add().](attachment:13a8ed9b-cbf1-4880-a789-371d67cbbd12:image.png)
+![Figure 2: Runtime rule evaluation using runkit_function_add().](image%201.png)
 
 Figure 2: Runtime rule evaluation using runkit_function_add().
 
@@ -69,7 +69,7 @@ This escalation path demonstrates how defense-in-depth fails when configuration 
 
 At this stage, the attacker gains unrestricted control over the host, effectively nullifying all application-level security controls.
 
-![Figure 4: Successful privilege escalation resulting in root-level access on the host.](attachment:90c30968-99a0-4db8-b60e-37a6678c46c2:image.png)
+![Figure 4: Successful privilege escalation resulting in root-level access on the host.](image%202.png)
 
 Figure 4: Successful privilege escalation resulting in root-level access on the host.
 
