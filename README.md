@@ -1,3 +1,42 @@
+# Offensive Security Write-ups
+
+This repository contains **technical offensive security write-ups** focused on
+**attack-chain reasoning, source code analysis, privilege escalation, and Active
+Directory exploitation** across Linux and Windows environments.
+
+The emphasis is on **why vulnerabilities exist**, how they are **chained
+together**, and how they can be **detected and mitigated** — not on
+walkthrough-style command execution.
+
+---
+
+## 🎯 What This Repository Demonstrates
+
+- Offensive security mindset and methodology
+- Web application exploitation and logic flaws
+- Source code review (PHP, insecure design patterns)
+- Linux and Windows privilege escalation
+- Active Directory attack paths and domain escalation logic
+- Abuse of misconfigurations and broken trust boundaries
+- Attacker and defender perspectives (detection & defense)
+
+---
+
+## 📂 Repository Structure
+
+htb-writeups/
+│
+├── linux/
+│ └── gavel.md
+│
+├── windows/
+│ └── README.md
+│
+├── active-directory/
+│ ├── README.md
+│ └── ad-attack-chains.md
+│
+└── README.md
 
 ---
 
