@@ -38,6 +38,11 @@ htb-writeups/
 │
 └── README.md
 
+### Directory Overview
+
+- `linux/` – Linux-based exploitation write-ups
+- `windows/` – Windows exploitation write-ups
+- `active-directory/` – Active Directory attack chains and enterprise exploitation
 
 ---
 
