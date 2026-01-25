@@ -35,7 +35,7 @@ This weakness was amplified by PDO’s default behavior of emulating prepared st
 
 Through this flaw, it was possible to enumerate user credentials and identify a privileged application account, providing the foothold required to access restricted administrative functionality within the platform.
 
-![Figure 1: Administrative interface allowing user-controlled rule modification.](image.png)
+![Figure 1: Administrative interface allowing user-controlled rule modification.](../assets/gavel/image.png)
 
 Figure 1: Administrative interface allowing user-controlled rule modification.
 
@@ -51,7 +51,7 @@ Because rule content was fully user-controlled and executed in the application c
 
 This vulnerability highlights the risk of treating user-defined logic as data rather than executable code. Any system that dynamically evaluates user-supplied input without strict controls effectively grants code execution to the user.
 
-![Figure 2: Runtime rule evaluation using runkit_function_add().](image%201.png)
+![Figure 2: Runtime rule evaluation using runkit_function_add().](../assets/gavel/image%201.png)
 
 Figure 2: Runtime rule evaluation using runkit_function_add().
 
@@ -69,7 +69,7 @@ This escalation path demonstrates how defense-in-depth fails when configuration 
 
 At this stage, the attacker gains unrestricted control over the host, effectively nullifying all application-level security controls.
 
-![Figure 4: Successful privilege escalation resulting in root-level access on the host.](image%202.png)
+![Figure 4: Successful privilege escalation resulting in root-level access on the host.](../assets/gavel/image%202.png)
 
 Figure 4: Successful privilege escalation resulting in root-level access on the host.
 
