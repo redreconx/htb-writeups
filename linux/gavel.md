@@ -8,6 +8,14 @@ The core weakness lies in the application’s design choices rather than a singl
 
 This machine demonstrates how *“flexible” application features*—such as dynamic rule engines, YAML-based configuration, and runtime function creation—can become critical attack vectors when security assumptions are violated.
 
+## Attack Flow Summary (High-Level)
+
+1. Identified logic-based SQL injection due to unsafe dynamic column handling in PDO
+2. Leveraged data exposure to access privileged administrative functionality
+3. Abused dynamic rule execution (runkit_function_add) to achieve RCE as web user
+4. Escalated privileges by abusing trusted YAML processing and PHP configuration integrity
+5. Achieved full root compromise of the host
+
 **Key themes:**
 
 - Source code exposure via public repository
