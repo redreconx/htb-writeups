@@ -1,6 +1,6 @@
 # Gavel – Linux Medium – Dynamic Rule Execution & Privilege Boundary Abuse
 
-# Machine Overview
+## Machine Overview
 
 **Gavel** is a Linux-based medium-difficulty machine that simulates a custom-built PHP auction platform. The application exposes multiple trust boundaries between user input, business logic, and backend execution, ultimately leading to remote code execution and full system compromise.
 
@@ -23,7 +23,7 @@ This machine demonstrates how *“flexible” application features*—such as dy
 - Unsafe dynamic code execution (`runkit_function_add`)
 - Privilege escalation via trusted helper utilities and configuration abuse
 
-Assessment Context
+## Assessment Context
 
 - OS: Linux
 - Difficulty: Medium
@@ -33,7 +33,7 @@ Assessment Context
     - Logic-based SQL injection
     - Privilege boundary and configuration integrity failures
 
-# Initial Access
+## Initial Access
 
 Initial access was achieved through a logic flaw in the inventory sorting functionality. While the developers attempted to protect database queries using prepared statements, they failed to account for how dynamically constructed SQL components behave when user input is interpolated directly into the query structure.
 
@@ -47,7 +47,9 @@ Through this flaw, it was possible to enumerate user credentials and identify a 
 
 Figure 1: Administrative interface allowing user-controlled rule modification.
 
-# Privilege Escalation – Application to User
+Successful exploitation resulted in access to administrative functionality within the application, confirming control over privileged application logic.
+
+## Privilege Escalation – Application to User
 
 *(Dynamic Rule Evaluation Abuse)*
 
@@ -63,7 +65,9 @@ This vulnerability highlights the risk of treating user-defined logic as data ra
 
 Figure 2: Runtime rule evaluation using runkit_function_add().
 
-# Privilege Escalation – User to Root
+This confirmed remote code execution in the context of the web application user.
+
+## Privilege Escalation – User to Root
 
 *(Trusted Utility Abuse via YAML and PHP Configuration)*
 
@@ -81,7 +85,9 @@ At this stage, the attacker gains unrestricted control over the host, effectivel
 
 Figure 4: Successful privilege escalation resulting in root-level access on the host.
 
-# Detection & Defense
+This resulted in execution of system commands with root privileges, confirming full host compromise.
+
+## Detection & Defense
 
 ### Detection Opportunities
 
@@ -132,3 +138,5 @@ Figure 4: Successful privilege escalation resulting in root-level access on the 
     
 
 Together, these issues highlight that partial security controls are ineffective when architectural trust boundaries and configuration integrity are not strictly enforced.
+
+> This write-up documents a controlled laboratory assessment performed for educational purposes. The focus is on understanding root causes, attack paths, and defensive failures rather than tool execution details.
