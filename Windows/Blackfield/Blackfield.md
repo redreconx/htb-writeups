@@ -35,7 +35,7 @@ The scan reveals some ports open:
 
 Additionally it reveals, it is a domain controller and domain name is BLACKFIELD.local.
 
-![image.png](image.png)
+![image.png](../../Assets/Blackfield/image.png)
 
 ### SMB Enumeration
 
@@ -47,7 +47,7 @@ Found `profiles$` share with read access. Unfortunately, no files were found, bu
 smbmap -u guest -H 10.129.229.17
 ```
 
-![image.png](image%201.png)
+![image.png](../../Assets/Blackfield/image%201.png)
 
 Let's mount the share to analyze its contents:
 
@@ -61,7 +61,7 @@ Kerberos without pre-auth → AS-REP roastable accounts.
 
 Now list out the folders, filter the usernames using awk, and save them to a text file.
 
-![image.png](image%202.png)
+![image.png](../../Assets/Blackfield/image%202.png)
 
 ### User Validation
 
